@@ -350,7 +350,7 @@ for competitor in competitors:
 
 ### Folder Structure
 ```
-viewport-knowledgebase/
+viewportknowledgebase/
 ├── reports/
 │   ├── AI-News-Articles-Use-Case-Report.md
 │   └── ...

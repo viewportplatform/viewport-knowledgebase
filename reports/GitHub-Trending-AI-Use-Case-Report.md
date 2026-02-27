@@ -307,7 +307,7 @@ if result.security_violations:
 
 ### Folder Structure
 ```
-viewport-knowledgebase/
+viewportknowledgebase/
 ├── reports/
 │   ├── GitHub-Trending-AI-Use-Case-Report.md
 │   └── ...
