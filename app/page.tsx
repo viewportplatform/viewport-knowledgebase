@@ -116,6 +116,7 @@ npm install -g @anthropic-ai/claude-code
   { title: 'The Complete Claude Project Blueprint', category: 'Claude Code', difficulty: 'intermediate' },
   { title: 'The Complete System | 9 Agents | 50+ Use Cases', category: 'Claude Code', difficulty: 'advanced' },
   { title: 'The Agent Playbook', category: 'Claude Code', difficulty: 'intermediate' },
+  { title: 'Claude Code Hackathon Winner — Zenith.chat', category: 'Claude Code', difficulty: 'advanced' },
 ]
 
 // AA Knowledge Base Articles
