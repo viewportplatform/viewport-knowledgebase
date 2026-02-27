@@ -6,13 +6,13 @@ import { useState, useEffect } from 'react'
 const stats = [
   { label: 'Categories', value: '10' },
   { label: 'Articles', value: '100+' },
-  { label: 'Prompts', value: '20+' },
-  { label: 'Workflows', value: '10+' },
-  { label: 'Sessions', value: '118' },
+  { label: 'Prompts', value: '50+' },
+  { label: 'Workflows', value: '30+' },
+  { label: 'Case Studies', value: '15+' },
 ]
 
-// AA Articles with full content
-const aaArticles = [
+// Claude Code Masterclass Articles
+const claudeCodeArticles = [
   {
     title: 'Claude Code Setup',
     category: 'Claude Code',
@@ -57,7 +57,7 @@ npm install -g @anthropic-ai/claude-code
 - "Rate limit exceeded" → Wait 10-15 minutes or upgrade to Claude Max`
   },
   {
-    title: 'Sonnet 4.6 Agent Guide (Claude Code)',
+    title: 'Sonnet 4.6 Agent Guide',
     category: 'Claude Code',
     difficulty: 'intermediate',
     content: `## Agent Roles
@@ -107,15 +107,19 @@ npm install -g @anthropic-ai/claude-code
 - **Sentinel** can block a release if high-risk finding
 - **Gauge** defines what "done" means in tests`
   },
+  { title: 'The Agentic Coding Blueprint', category: 'Claude Code', difficulty: 'intermediate' },
+  { title: 'Claude Code Agent Swarm', category: 'Claude Code', difficulty: 'advanced' },
+  { title: 'The Complete Claude Project Blueprint', category: 'Claude Code', difficulty: 'intermediate' },
+  { title: 'The Complete System | 9 Agents | 50+ Use Cases', category: 'Claude Code', difficulty: 'advanced' },
+  { title: 'The Agent Playbook', category: 'Claude Code', difficulty: 'intermediate' },
+]
+
+// AA Knowledge Base Articles
+const aaArticles: Array<{ title: string; category: string; difficulty: string }> = [
   { title: 'META Ads Dashboard PRD', category: 'Business', difficulty: 'intermediate' },
   { title: 'OSI Layers + OpenClaw Guardrails (Miro)', category: 'OpenClaw', difficulty: 'advanced' },
   { title: 'Master Claw Org Chart', category: 'OpenClaw', difficulty: 'intermediate' },
   { title: 'Vibe Marketing Quick Setup', category: 'Marketing', difficulty: 'beginner' },
-  { title: 'The Agentic Coding Blueprint', category: 'Claude Code', difficulty: 'intermediate' },
-  { title: 'Claude Code Agent Swarm', category: 'Claude Code', difficulty: 'advanced' },
-  { title: 'Hostinger VPS Setup', category: 'Deployment', difficulty: 'intermediate' },
-  { title: 'Vibe Engineering Process Guide', category: 'Engineering', difficulty: 'intermediate' },
-  { title: 'OpenClaw = Jarvis | Setup Guide', category: 'OpenClaw', difficulty: 'beginner' },
   { title: 'Remotion + CC Builder\'s Guide', category: 'Development', difficulty: 'intermediate' },
   { title: 'The Complete Guide to Cowork', category: 'Claude Code', difficulty: 'beginner' },
   { title: 'Docker Desktop MCP', category: 'MCP', difficulty: 'intermediate' },
@@ -135,28 +139,11 @@ npm install -g @anthropic-ai/claude-code
   { title: 'Top 3 $$$ Making Automations 2025', category: 'Automation', difficulty: 'intermediate' },
   { title: 'Sora 2 Full Guide: AI Video Revolution', category: 'AI Tools', difficulty: 'beginner' },
   { title: '20 Best N8N Automations to Sell', category: 'Automation', difficulty: 'intermediate' },
-  { title: 'The Complete Claude Project Blueprint', category: 'Claude Code', difficulty: 'intermediate' },
   { title: 'Ollama Setup Guide and Research', category: 'AI Tools', difficulty: 'beginner' },
-  { title: 'The Complete System | 9 Agents | 50+ Use Cases', category: 'Claude Code', difficulty: 'advanced' },
-  { title: 'The Agent Playbook', category: 'Claude Code', difficulty: 'intermediate' },
 ]
 
-// Categories for sidebar
-const categories = [
-  { name: 'Claude Code', count: 12, color: '#7c3aed' },
-  { name: 'OpenClaw', count: 5, color: '#0891b2' },
-  { name: 'Automation', count: 8, color: '#ea580c' },
-  { name: 'Business', count: 7, color: '#ca8a04' },
-  { name: 'AI Tools', count: 6, color: '#9333ea' },
-  { name: 'MCP', count: 4, color: '#0891b2' },
-  { name: 'Marketing', count: 5, color: '#dc2626' },
-  { name: 'Development', count: 4, color: '#059669' },
-  { name: 'Deployment', count: 3, color: '#dc2626' },
-  { name: 'Engineering', count: 2, color: '#be185d' },
-]
-
-// Prompts
-const prompts = [
+// Advanced Prompts
+const advancedPrompts = [
   {
     title: 'Plan Implementation',
     category: 'Claude Code',
@@ -214,16 +201,209 @@ Perform a comprehensive security audit:
 6. Rate limiting gaps`,
     why: 'Full security audit with OWASP checklist',
   },
+  {
+    title: 'Code Refactoring',
+    category: 'Development',
+    prompt: `Refactor this code following these principles:
+
+1. Extract reusable functions
+2. Improve naming and clarity
+3. Reduce complexity
+4. Add necessary comments
+5. Maintain identical behavior
+
+Run tests before and after to ensure no regressions.`,
+    why: 'Systematic refactoring with safety checks',
+  },
+  {
+    title: 'API Documentation',
+    category: 'Documentation',
+    prompt: `Generate comprehensive API documentation:
+
+1. List all endpoints with methods
+2. Document request/response schemas
+3. Include example requests
+4. Describe authentication
+5. Note error codes and responses
+
+Output in Markdown format.`,
+    why: 'Complete API documentation for developers',
+  },
+]
+
+// Case Studies
+const caseStudies = [
+  {
+    title: 'Telegram Bot System Deep Dive',
+    category: 'Real-World',
+    description: 'Full breakdown of building a production Telegram bot with OpenClaw, including session management, rate limiting, and multi-server deployment.',
+    outcome: 'Deployed bot handling 1000+ daily users with 99.9% uptime',
+    duration: '6 weeks',
+    stack: 'Python, Telethon, OpenClaw, Oracle Cloud',
+  },
+  {
+    title: 'AI Agency Automation Suite',
+    category: 'Business',
+    description: 'Complete automation pipeline for an AI agency, including lead generation, client onboarding, and project delivery workflows.',
+    outcome: 'Reduced manual work by 70%, increased revenue 3x',
+    duration: '8 weeks',
+    stack: 'N8N, Claude API, Stripe, Airtable',
+  },
+  {
+    title: 'E-Commerce Dashboard Migration',
+    category: 'Migration',
+    description: 'Migrating a legacy dashboard to Next.js with real-time analytics, AI-powered insights, and seamless data synchronization.',
+    outcome: '50% faster page loads, new AI insights feature',
+    duration: '4 weeks',
+    stack: 'Next.js, PostgreSQL, Vercel, Supabase',
+  },
+  {
+    title: 'Multi-Agent Code Review System',
+    category: 'Innovation',
+    description: 'Building an automated code review system using Claude Code agents with parallel analysis, security scanning, and quality scoring.',
+    outcome: 'Catches 90% of bugs before merge, 2x faster reviews',
+    duration: '5 weeks',
+    stack: 'Claude Code, Python, GitHub Actions',
+  },
+  {
+    title: 'Content Automation Pipeline',
+    category: 'Marketing',
+    description: 'End-to-end content generation and distribution system using AI, N8N workflows, and multi-platform publishing.',
+    outcome: 'Produces 100+ articles/week, saves 40 hours/month',
+    duration: '3 weeks',
+    stack: 'Claude API, N8N, WordPress, LinkedIn API',
+  },
+]
+
+// Best Practices
+const bestPractices = [
+  {
+    title: 'Investigation-First Development',
+    category: 'Workflow',
+    priority: 'high',
+    content: `Never jump to fixing without understanding the problem.
+
+## Process
+1. Reproduce the issue
+2. Read all relevant files
+3. Check logs and error messages
+4. Identify root cause
+5. Propose fix approach
+6. Get approval before implementing
+
+## Benefits
+- Reduces wrong fixes by 80%
+- Saves time on back-and-forth
+- Improves code quality
+- Builds deeper understanding`,
+  },
+  {
+    title: 'Minimal Change Principle',
+    category: 'Code Quality',
+    priority: 'high',
+    content: `Make the smallest change that solves the problem.
+
+## Guidelines
+- Change one thing at a time
+- Test after each change
+- Document why the change works
+- Refactor later if needed
+
+## Examples
+- Fix: Change one CSS property value
+- Wrong: Rewrite entire stylesheet
+- Fix: Add one validation rule
+- Wrong: Refactor all validation logic`,
+  },
+  {
+    title: 'Test-Driven Iteration',
+    category: 'Testing',
+    priority: 'high',
+    content: `Write verification before making changes.
+
+## Workflow
+1. Write test that fails
+2. Confirm it fails
+3. Write minimal fix
+4. Confirm test passes
+5. Repeat for edge cases
+
+## Why It Works
+- Guarantees fix addresses the issue
+- Prevents regressions
+- Documents expected behavior
+- Makes debugging easier`,
+  },
+  {
+    title: 'Context Preservation',
+    category: 'Communication',
+    priority: 'medium',
+    content: `Maintain context across long sessions.
+
+## Techniques
+- Summarize what was done
+- List current state
+- Note what remains
+- Reference prior decisions
+
+## Template
+\`\`\`
+Completed: [list]
+Current state: [describe]
+Next steps: [list]
+Known constraints: [list]
+\`\`\``,
+  },
+  {
+    title: 'Parallel Task Breakdown',
+    category: 'Productivity',
+    priority: 'medium',
+    content: `Break work into independent parallel tasks.
+
+## Steps
+1. Identify dependencies
+2. Group by independence
+3. Assign to agents/workers
+4. Collect results
+5. Integrate and test
+
+## Benefits
+- 3-5x faster completion
+- Better resource utilization
+- Natural fault isolation
+- Early failure detection`,
+  },
+]
+
+// Categories for sidebar
+const categories = [
+  { name: 'Claude Code', count: 15, color: '#7c3aed' },
+  { name: 'OpenClaw', count: 5, color: '#0891b2' },
+  { name: 'Automation', count: 8, color: '#ea580c' },
+  { name: 'Business', count: 7, color: '#ca8a04' },
+  { name: 'AI Tools', count: 6, color: '#9333ea' },
+  { name: 'MCP', count: 4, color: '#0891b2' },
+  { name: 'Marketing', count: 5, color: '#dc2626' },
+  { name: 'Development', count: 4, color: '#059669' },
+  { name: 'Deployment', count: 3, color: '#dc2626' },
+  { name: 'Engineering', count: 2, color: '#be185d' },
 ]
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('')
-  const [activeTab, setActiveTab] = useState<'home' | 'aa' | 'prompts'>('home')
+  const [activeTab, setActiveTab] = useState<'home' | 'aa' | 'masterclass' | 'prompts' | 'casestudies' | 'practices'>('home')
   const [copiedPrompt, setCopiedPrompt] = useState<number | null>(null)
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null)
   const [expandedArticle, setExpandedArticle] = useState<number | null>(null)
+  const [expandedPractice, setExpandedPractice] = useState<number | null>(null)
+  const [expandedCase, setExpandedCase] = useState<number | null>(null)
 
   const filteredArticles = aaArticles.filter(a =>
+    a.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    a.category.toLowerCase().includes(searchQuery.toLowerCase())
+  )
+
+  const filteredMasterclass = claudeCodeArticles.filter(a =>
     a.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
     a.category.toLowerCase().includes(searchQuery.toLowerCase())
   )
@@ -274,7 +454,7 @@ export default function Home() {
           borderRadius: 8,
           border: '1px solid #e2e8f0',
         }}>
-          {['home', 'aa', 'prompts'].map((tab) => (
+          {['home', 'aa', 'masterclass', 'prompts', 'casestudies', 'practices'].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab as typeof activeTab)}
@@ -290,7 +470,12 @@ export default function Home() {
                 transition: 'all 0.15s',
               }}
             >
-              {tab === 'aa' ? 'AA Knowledge Base' : tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {tab === 'aa' ? 'AA Knowledge Base' : 
+               tab === 'masterclass' ? 'Claude Code Masterclass' :
+               tab === 'prompts' ? 'Advanced Prompts' :
+               tab === 'casestudies' ? 'Case Studies' :
+               tab === 'practices' ? 'Best Practices' :
+               tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
           ))}
         </nav>
@@ -350,7 +535,7 @@ export default function Home() {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 <div style={{ fontSize: 14, color: '#78350f', lineHeight: 1.6 }}>
-                  <strong style={{ color: '#92400e' }}>What's included:</strong> Claude Code masterclass, OpenClaw setup guides, N8N automation workflows, AI agency playbooks, MCP integration tutorials, and 70+ articles from the AA Knowledge Base.
+                  <strong style={{ color: '#92400e' }}>What's included:</strong> Claude Code masterclass, OpenClaw setup guides, N8N automation workflows, AI agency playbooks, MCP integration tutorials, advanced prompts, real-world case studies, and best practices.
                 </div>
                 <div style={{ fontSize: 14, color: '#78350f', lineHeight: 1.6 }}>
                   <strong style={{ color: '#92400e' }}>How to use:</strong> Browse categories, search for specific topics, or copy-paste prompts directly into your AI assistant.
@@ -407,12 +592,12 @@ export default function Home() {
                   </div>
                   {expandedCategory === cat.name && (
                     <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid #e2e8f0' }}>
-                      {aaArticles.filter(a => a.category === cat.name).map((article, j) => (
+                      {[...aaArticles, ...claudeCodeArticles].filter(a => a.category === cat.name).map((article, j) => (
                         <div
                           key={j}
                           style={{
                             padding: '8px 0',
-                            borderBottom: j < aaArticles.filter(a => a.category === cat.name).length - 1 ? '1px solid #f1f5f9' : 'none',
+                            borderBottom: j < [...aaArticles, ...claudeCodeArticles].filter(a => a.category === cat.name).length - 1 ? '1px solid #f1f5f9' : 'none',
                             display: 'flex',
                             justifyContent: 'space-between',
                             alignItems: 'center',
@@ -452,6 +637,58 @@ export default function Home() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {filteredArticles.map((article, i) => (
+                <div
+                  key={i}
+                  style={{
+                    background: 'white',
+                    border: '1px solid #e2e8f0',
+                    borderRadius: 8,
+                    padding: 16,
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontWeight: 600, fontSize: 15, color: '#0f172a', marginBottom: 4 }}>
+                      {article.title}
+                    </div>
+                    <div style={{ fontSize: 13, color: '#64748b' }}>
+                      {article.category}
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <span style={{
+                      fontSize: 11,
+                      padding: '4px 8px',
+                      borderRadius: 4,
+                      flexShrink: 0,
+                      background: article.difficulty === 'beginner' ? '#f0fdf4' :
+                        article.difficulty === 'intermediate' ? '#fef3c7' : '#fef2f2',
+                      color: article.difficulty === 'beginner' ? '#166534' :
+                        article.difficulty === 'intermediate' ? '#92400e' : '#991b1b',
+                    }}>
+                      {article.difficulty}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* CLAUDE CODE MASTERCLASS TAB */}
+        {activeTab === 'masterclass' && (
+          <div>
+            <h2 style={{ fontSize: 20, fontWeight: 600, color: '#0f172a', marginBottom: 16 }}>
+              Claude Code Masterclass
+            </h2>
+            <p style={{ fontSize: 14, color: '#64748b', marginBottom: 24 }}>
+              Complete guides for mastering Claude Code, from setup to advanced agent orchestration.
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {filteredMasterclass.map((article, i) => (
                 <div
                   key={i}
                   style={{
@@ -523,18 +760,18 @@ export default function Home() {
           </div>
         )}
 
-        {/* PROMPTS TAB */}
+        {/* ADVANCED PROMPTS TAB */}
         {activeTab === 'prompts' && (
           <div>
             <h2 style={{ fontSize: 20, fontWeight: 600, color: '#0f172a', marginBottom: 16 }}>
-              Copy-Paste Prompts
+              Advanced Prompts
             </h2>
             <p style={{ fontSize: 14, color: '#64748b', marginBottom: 24 }}>
               Ready-to-use prompts for common tasks. Click copy and paste into your AI assistant.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              {prompts.map((prompt, i) => (
+              {advancedPrompts.map((prompt, i) => (
                 <div
                   key={i}
                   style={{
@@ -586,6 +823,153 @@ export default function Home() {
                   <div style={{ fontSize: 13, color: '#475569' }}>
                     <strong>Why:</strong> {prompt.why}
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* CASE STUDIES TAB */}
+        {activeTab === 'casestudies' && (
+          <div>
+            <h2 style={{ fontSize: 20, fontWeight: 600, color: '#0f172a', marginBottom: 16 }}>
+              Case Studies
+            </h2>
+            <p style={{ fontSize: 14, color: '#64748b', marginBottom: 24 }}>
+              Real-world projects with detailed breakdowns, outcomes, and lessons learned.
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              {caseStudies.map((study, i) => (
+                <div
+                  key={i}
+                  style={{
+                    background: 'white',
+                    border: '1px solid #e2e8f0',
+                    borderRadius: 8,
+                    overflow: 'hidden',
+                  }}
+                >
+                  <div 
+                    onClick={() => setExpandedCase(expandedCase === i ? null : i)}
+                    style={{ 
+                      padding: 16,
+                      cursor: 'pointer',
+                      display: 'flex', 
+                      justifyContent: 'space-between', 
+                      alignItems: 'flex-start' 
+                    }}
+                  >
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontWeight: 600, fontSize: 15, color: '#0f172a', marginBottom: 4 }}>
+                        {study.title}
+                      </div>
+                      <div style={{ fontSize: 12, color: '#64748b', marginBottom: 8 }}>
+                        {study.category} • {study.duration}
+                      </div>
+                      <div style={{ fontSize: 13, color: '#475569' }}>
+                        {study.description}
+                      </div>
+                    </div>
+                    <span style={{ color: '#94a3b8', fontSize: 12, marginLeft: 12 }}>
+                      {expandedCase === i ? '−' : '+'}
+                    </span>
+                  </div>
+                  {expandedCase === i && (
+                    <div style={{
+                      padding: '0 16px 16px 16px',
+                      borderTop: '1px solid #e2e8f0',
+                      background: '#fafafa',
+                    }}>
+                      <div style={{ paddingTop: 16, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                        <div style={{ fontSize: 13, color: '#334155' }}>
+                          <strong>Outcome:</strong> {study.outcome}
+                        </div>
+                        <div style={{ fontSize: 13, color: '#334155' }}>
+                          <strong>Stack:</strong> {study.stack}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* BEST PRACTICES TAB */}
+        {activeTab === 'practices' && (
+          <div>
+            <h2 style={{ fontSize: 20, fontWeight: 600, color: '#0f172a', marginBottom: 16 }}>
+              Best Practices
+            </h2>
+            <p style={{ fontSize: 14, color: '#64748b', marginBottom: 24 }}>
+              Proven workflows and principles for effective AI-assisted development.
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              {bestPractices.map((practice, i) => (
+                <div
+                  key={i}
+                  style={{
+                    background: practice.priority === 'high' ? '#f0fdf4' : '#fff',
+                    border: `1px solid ${practice.priority === 'high' ? '#bbf7d0' : '#e2e8f0'}`,
+                    borderRadius: 8,
+                    overflow: 'hidden',
+                  }}
+                >
+                  <div 
+                    onClick={() => setExpandedPractice(expandedPractice === i ? null : i)}
+                    style={{ 
+                      padding: 16,
+                      cursor: 'pointer',
+                      display: 'flex', 
+                      justifyContent: 'space-between', 
+                      alignItems: 'flex-start' 
+                    }}
+                  >
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                        <div style={{ fontWeight: 600, fontSize: 15, color: '#0f172a' }}>
+                          {practice.title}
+                        </div>
+                        <span style={{
+                          fontSize: 10,
+                          padding: '2px 6px',
+                          borderRadius: 4,
+                          background: practice.priority === 'high' ? '#dc2626' : '#64748b',
+                          color: 'white',
+                          textTransform: 'uppercase',
+                        }}>
+                          {practice.priority}
+                        </span>
+                      </div>
+                      <div style={{ fontSize: 12, color: '#64748b' }}>
+                        {practice.category}
+                      </div>
+                    </div>
+                    <span style={{ color: '#94a3b8', fontSize: 12 }}>
+                      {expandedPractice === i ? '−' : '+'}
+                    </span>
+                  </div>
+                  {expandedPractice === i && practice.content && (
+                    <div style={{
+                      padding: '0 16px 16px 16px',
+                      borderTop: '1px solid #e2e8f0',
+                      background: '#fafafa',
+                    }}>
+                      <div style={{
+                        fontFamily: 'monospace',
+                        fontSize: 12,
+                        color: '#334155',
+                        whiteSpace: 'pre-wrap',
+                        lineHeight: 1.6,
+                        paddingTop: 16,
+                      }}>
+                        {practice.content}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
