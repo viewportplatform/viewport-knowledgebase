@@ -4,11 +4,11 @@ import { useState, useEffect } from 'react'
 
 // Stats
 const stats = [
-  { label: 'Categories', value: '10' },
-  { label: 'Articles', value: '100+' },
-  { label: 'Prompts', value: '50+' },
-  { label: 'Workflows', value: '30+' },
-  { label: 'Case Studies', value: '15+' },
+  { label: 'Categories', value: '12' },
+  { label: 'Articles', value: '200+' },
+  { label: 'Prompts', value: '20+' },
+  { label: 'Best Practices', value: '5' },
+  { label: 'Case Studies', value: '4' },
 ]
 
 // Claude Code Masterclass Articles
@@ -440,7 +440,7 @@ export default function Home() {
           VIEWPORT Knowledge Base
         </h1>
         <p style={{ color: '#64748b', fontSize: 15, marginBottom: 32 }}>
-          Your complete AI development guide • 100+ articles • Updated daily
+          Your complete AI development guide • 200+ articles • Claude Code Masterclass • Advanced Prompts • Best Practices • Case Studies
         </p>
 
         {/* Navigation */}
