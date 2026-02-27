@@ -1,5 +1,5 @@
 {
-  "name": "viewport-knowledgebase",
+  "name": "viewportknowledgebase",
   "version": "1.0.0",
   "description": "VIEWPORT Knowledge Base - Your Complete AI Development Guide",
   "scripts": {
@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "framer-motion": "^12.34.3",
     "next": "^14.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-markdown": "^9.0.1"
+    "react-markdown": "^9.0.1",
+    "recharts": "^3.7.0"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

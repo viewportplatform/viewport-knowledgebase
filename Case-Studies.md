@@ -886,7 +886,7 @@ These case studies demonstrate VIEWPORT's execution methodology:
 ## Repository Structure
 
 ```
-viewport-knowledgebase/
+viewportknowledgebase/
 ├── Case-Studies.md          # This file
 ├── README.md                # Overview
 ├── docs/

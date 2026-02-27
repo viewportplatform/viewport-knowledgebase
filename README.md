@@ -13,7 +13,7 @@ This repository contains all documentation, case studies, templates, and learnin
 ## Structure
 
 ```
-viewport-knowledgebase/
+viewportknowledgebase/
 ├── README.md                    # This file
 ├── Case-Studies.md              # Detailed project case studies
 ├── AGENTS.md                    # VIEWPORT operating instructions

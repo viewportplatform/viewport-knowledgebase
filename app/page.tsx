@@ -1,6 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import Search from '@/components/Search'
+import Navigation from '@/components/Navigation'
+import Breadcrumbs from '@/components/Breadcrumbs'
+import ShortcutsModal from '@/components/ShortcutsModal'
 
 // Stats
 const stats = [
@@ -990,7 +994,7 @@ export default function Home() {
           </div>
           <div>Learn • Build • Share • Repeat</div>
           <div style={{ marginTop: 8 }}>
-            <a href="https://viewport-knowledgebase.vercel.app" style={{ color: '#64748b', textDecoration: 'none', marginRight: 16 }}>
+            <a href="https://viewportknowledgebase.vercel.app" style={{ color: '#64748b', textDecoration: 'none', marginRight: 16 }}>
               Live Site
             </a>
             <a href="https://github.com/viewportplatform" style={{ color: '#64748b', textDecoration: 'none' }}>

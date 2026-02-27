@@ -2,7 +2,7 @@
 
 **Date:** 2026-02-28  
 **Status:** ✅ COMPLETE  
-**Repository:** viewportplatform/viewport-knowledgebase  
+**Repository:** viewportplatform/viewportknowledgebase  
 
 ---
 
@@ -109,8 +109,8 @@ Total Reading Time:    ~5-6 hours
 
 **Commit Hash:** `026610d8669567bc316412c12c91006bb60c79f3`  
 **Branch:** `main`  
-**Repository:** `/Users/Office/.openclaw/workspace/viewport-knowledgebase`  
-**Remote:** `https://github.com/viewportplatform/viewport-knowledgebase.git`  
+**Repository:** `/Users/Office/.openclaw/workspace/viewportknowledgebase`  
+**Remote:** `https://github.com/viewportplatform/viewportknowledgebase.git`  
 
 **Commit Message:**
 ```
@@ -222,7 +222,7 @@ HEAD branch: (unknown)
 - All 39 articles are complete with detailed instructions, code examples, and best practices
 - The document is well-structured and ready for use
 - Push to GitHub requires resolving authentication/remote repository issues
-- The file is available locally at `/Users/Office/.openclaw/workspace/viewport-knowledgebase/AA-Knowledge-Base.md`
+- The file is available locally at `/Users/Office/.openclaw/workspace/viewportknowledgebase/AA-Knowledge-Base.md`
 
 ---
 
