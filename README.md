@@ -2,6 +2,8 @@
 
 The complete knowledgebase for Sam's one-man empire, powered by VIEWPORT.
 
+**Last updated:** February 28, 2026
+
 ## Purpose
 
 This repository contains all documentation, case studies, templates, and learnings from the VIEWPORT execution engine. It serves as:
